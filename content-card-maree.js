@@ -69,16 +69,42 @@ class ContentCardMaree extends LitElement {
                   ${this.config.showNextMaree
                     ? html`
                       <div class="next-block">
-                        <span class="more-unit">Coefficiant : </span><span class="coeff">${attributes.next_coeff}</span>
-                        <span>&nbsp;<span>
-                        <span class="more-unit">Horaire : </span><span class="heure">${attributes.next_maree}</span>
+                      <table>
+                        <tr>
+                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="coeff">${attributes.next_coeff_1}</span></td>
+                        <td><span class="more-unit">Horaire : </span><span class="heure">${attributes.next_maree_1}</span></td>
+                        </tr>
+                      </table>
+                      </div>`
+                    : html``
+                  }
+                  ${this.config.showNextMareesDetail
+                    ? html`
+                      <div class="next-block">
+                      <table width="100%">
+                        <tr>
+                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="coeff">${attributes.next_coeff_1}</span></td>
+                        <td><span class="more-unit">Horaire : </span></td>
+                        <td><span class="heure">${attributes.next_maree_1}</span></td>
+                        <td><span class="etat" >${attributes.next_etat_1}</span></td>
+                        </tr>
+                        <tr>
+                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="coeff">${attributes.next_coeff_2}</span></td>
+                        <td><span class="more-unit">Horaire : </span></td>
+                        <td><span class="heure">${attributes.next_maree_2}</span></td>
+                        <td><span class="etat" >${attributes.next_etat_2}</span></td>
+                        </tr>
+                      </table>
                       </div>`
                     : html``
                   }
                   ${this.config.showEtatNextMaree 
                     ? html `
                     <div class="next-etat-block">
-                      <span class="etat" >${attributes.next_etat}</span>
+                      <span class="etat" >${attributes.next_etat_1}</span>
                     </div>`
                     : html ``
                    }
@@ -124,6 +150,7 @@ class ContentCardMaree extends LitElement {
       showNextMaree: true,
       showIcon: false,
       showEtatNextMaree: true,
+      showNextMareesDetail: false,
       showTitle: false,
       titleName: "",
     }
@@ -170,6 +197,9 @@ class ContentCardMaree extends LitElement {
         color: var(--paper-item-icon-color);
       }
       
+      .next-block {
+        width:100%;
+      }
       .next-etat-block {
       }
     
