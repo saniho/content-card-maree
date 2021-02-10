@@ -7,5 +7,18 @@ entity: sensor.myport_124_mareedujour
 showIcon: false
 showNextMaree: true
 showTitle: true
+showEtatNextMaree: true
+showNextMareesDetail: false
+```
+
+pour voir les deux prochaines marées : 
+```
+type: 'custom:content-card-maree'
+entity: sensor.myport_124_mareedujour
+showIcon: false
+showNextMaree: false
+showEtatNextMaree: false
+showNextMareesDetail: true
+showTitle: true
 ```
 
