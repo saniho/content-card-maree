@@ -109,6 +109,9 @@ class ContentCardMaree extends LitElement {
                     : html ``
                    }
                 </div>
+                <div class="copyright-block">
+                    <span class="copyright-etat" >${attributes.Copyright}</span>
+                </div>
               </div>
             </ha-card>`
     }
@@ -219,6 +222,15 @@ class ContentCardMaree extends LitElement {
         margin: 1em;
       }
       .icon-block {
+      }
+      .copyright-block{
+        display: inline-block;
+      }
+      .copyright-etat {
+        text-align: right;
+        font-style: bold;
+        font-weight: 50;
+        font-size: 1em;
       }
     
       .Maree-icon.bigger {
