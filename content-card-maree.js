@@ -109,6 +109,8 @@ class ContentCardMaree extends LitElement {
                     : html ``
                    }
                 </div>
+                <br>
+                ${this.renderPrevision(attributes, this.config)}
                 <div class="copyright-block">
                     <span class="copyright-etat" >${attributes.Copyright}</span>
                 </div>
@@ -116,6 +118,66 @@ class ContentCardMaree extends LitElement {
             </ha-card>`
     }
   }
+  
+  renderPrevision(attributes, config) {
+    if ( config.showPrevision ) {
+        const forecast = attributes.prevision;
+        const nbPrev = config.nbPrev ;
+        return html
+          `
+          <table class="forecast clear" width="100%"><tr>
+              ${this.renderDataTitle( "Date" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDaily( daily )) }
+          </tr><tr>
+              ${this.renderDataTitle( "T° ext" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.t )) }
+          </tr><tr>
+              ${this.renderDataTitle( "T° eau" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.teau )) }
+          </tr><tr>
+              ${this.renderDataTitle( "precipitation" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.precipitation )) }
+          </tr><tr>
+              ${this.renderDataTitle( "hauteur houle" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.hauteurhoule )) }
+          </tr><tr>
+              ${this.renderDataTitle( "periode houle" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.periodehoule )) }
+          </tr><tr>
+              ${this.renderDataTitle( "force vent nds" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.forcevnds )) }
+          </tr><tr>
+              ${this.renderDataTitle( "rafales vent nds" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.rafvnds )) }
+          </tr><tr>
+              ${this.renderDataTitle( "couverture nuage" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.nuagecouverture )) }
+          </tr><tr>
+              ${this.renderDataTitle( "risque d'orage" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.risqueorage )) }
+          </tr><tr>
+              ${this.renderDataTitle( "hauteur vague" ) }
+              ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.hauteurvague )) }
+          </tr></table>`;
+    }
+  }
+  renderDaily(daily) {
+    return html
+      `<td>
+      <div class="day">
+         <span class="time">${new Date(daily.datetime).toLocaleString('en-US', {hour: 'numeric', hour12: false} )}h</span>
+      </div>
+      </td>`;
+  }
+  renderDataTitle(title) {
+    return html
+      `<td><span class="hourlyTitre">${title}</span></td>`;
+  }
+  renderDailyData(item) {
+    return html
+      `<td class="hourlyData"><span class="hourlyData">${item}</span></td>`;
+  }
+  
   _showDetails(myEntity) {
     const event = new Event('hass-more-info', {
       bubbles: true,
@@ -155,6 +217,8 @@ class ContentCardMaree extends LitElement {
       showEtatNextMaree: true,
       showNextMareesDetail: false,
       showTitle: false,
+      showPrevision: false,
+      nbPrev: 6,
       titleName: "",
     }
 
@@ -245,6 +309,36 @@ class ContentCardMaree extends LitElement {
         font-style: bold;
         margin-left: 5px;
       }
+      .clear {
+        clear: both;
+      }
+      
+      .forecast .day:first-child {
+        margin-left: 0;
+      }
+      .forecast .day:nth-last-child(1) {
+        border-right: none;
+        margin-right: 0;
+      }
+      .hourlyTitre {
+        font-weight: bold;
+      }
+      .hourlyData {
+        text-align:center;
+      }
+      .day {
+        display: block;
+        float: left;
+        text-align: center;
+        color: var(--primary-text-color);
+        line-height: 2;
+        box-sizing: border-box;
+      }
+      .time {
+        text-transform: uppercase;
+        font-size: 1em;
+      }
+
       `;
   }
 }
