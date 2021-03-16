@@ -126,7 +126,7 @@ class ContentCardMaree extends LitElement {
         return html
           `
           <table class="forecast clear" width="100%"><tr>
-              ${this.renderDataTitle( "Date" ) }
+              ${this.renderDataTitle( "Heure" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDaily( daily )) }
           </tr><tr>
               ${this.renderDataTitle( "T° ext" ) }
@@ -135,28 +135,28 @@ class ContentCardMaree extends LitElement {
               ${this.renderDataTitle( "T° eau" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.teau )) }
           </tr><tr>
-              ${this.renderDataTitle( "precipitation" ) }
+              ${this.renderDataTitle( "Précipitation" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.precipitation )) }
           </tr><tr>
-              ${this.renderDataTitle( "hauteur houle" ) }
+              ${this.renderDataTitle( "Hauteur houle" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.hauteurhoule )) }
           </tr><tr>
-              ${this.renderDataTitle( "periode houle" ) }
+              ${this.renderDataTitle( "Période houle" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.periodehoule )) }
           </tr><tr>
-              ${this.renderDataTitle( "force vent nds" ) }
+              ${this.renderDataTitle( "Force vent nds" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.forcevnds )) }
           </tr><tr>
-              ${this.renderDataTitle( "rafales vent nds" ) }
+              ${this.renderDataTitle( "Rafales vent nds" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.rafvnds )) }
           </tr><tr>
-              ${this.renderDataTitle( "couverture nuage" ) }
+              ${this.renderDataTitle( "Couverture nuage" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.nuagecouverture )) }
           </tr><tr>
-              ${this.renderDataTitle( "risque d'orage" ) }
+              ${this.renderDataTitle( "Risque d'orage" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.risqueorage )) }
           </tr><tr>
-              ${this.renderDataTitle( "hauteur vague" ) }
+              ${this.renderDataTitle( "Hauteur vague" ) }
               ${forecast.slice(0, nbPrev ).map((daily, index ) => this.renderDailyData( daily.hauteurvague )) }
           </tr></table>`;
     }
