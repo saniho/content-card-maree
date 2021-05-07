@@ -69,11 +69,12 @@ class ContentCardMaree extends LitElement {
                   ${this.config.showNextMaree
                     ? html`
                       <div class="next-block">
-                      <table>
+                      <table width="100%">
                         <tr>
-                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="more-unit">${this.renderTitreCoeff(attributes.next_coeff_1)}</span></td>
                         <td><span class="coeff">${attributes.next_coeff_1}</span></td>
-                        <td><span class="more-unit">Horaire : </span><span class="heure">${attributes.next_maree_1}</span></td>
+                        <td><span class="more-unit">Horaire : </span></td>
+                        <td><span class="heure">${attributes.next_maree_1}</span></td>
                         </tr>
                       </table>
                       </div>`
@@ -84,14 +85,14 @@ class ContentCardMaree extends LitElement {
                       <div class="next-block">
                       <table width="100%">
                         <tr>
-                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="more-unit">${this.renderTitreCoeff(attributes.next_coeff_1)}</span></td>
                         <td><span class="coeff">${attributes.next_coeff_1}</span></td>
                         <td><span class="more-unit">Horaire : </span></td>
                         <td><span class="heure">${attributes.next_maree_1}</span></td>
                         <td><span class="etat" >${attributes.next_etat_1}</span></td>
                         </tr>
                         <tr>
-                        <td><span class="more-unit">Coefficiant : </span></td>
+                        <td><span class="more-unit">${this.renderTitreCoeff(attributes.next_coeff_2)}</span></td>
                         <td><span class="coeff">${attributes.next_coeff_2}</span></td>
                         <td><span class="more-unit">Horaire : </span></td>
                         <td><span class="heure">${attributes.next_maree_2}</span></td>
@@ -204,6 +205,16 @@ class ContentCardMaree extends LitElement {
           </div>
           </div>` 
        }
+  }
+  renderTitreCoeff( coeff ) {
+    if (coeff === "") {
+       var ch = "" ;
+    }
+    else{
+       var ch = "Coefficient : " ;
+    }
+    return html
+        `${ch}` 
   }
 
   setConfig(config) {
