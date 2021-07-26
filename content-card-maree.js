@@ -28,6 +28,11 @@ class ContentCardMaree extends LitElement {
     };
   }
 
+  static async getConfigElement() {
+    await import("./content-card-maree-editor.js");
+    return document.createElement("content-card-maree-editor");
+  }
+
   render() {
     if (!this.config || !this.hass) {
       return html``;
