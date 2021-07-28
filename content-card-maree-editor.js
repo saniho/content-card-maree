@@ -103,6 +103,7 @@ export class contentCardMareeEditor extends LitElement {
             .configValue="${"name"}"
             @value-changed="${this._valueChanged}"
           ></paper-input>
+          ${this.renderLinkyPicker("Entity", this._entity, "entity")}
           <!-- Switches -->
           <ul class="switches">
             ${this.renderSwitchOption("Show icon", this._icon, "showIcon")}
@@ -130,6 +131,24 @@ export class contentCardMareeEditor extends LitElement {
         </div>
       </div>
     `;
+  }
+  
+  renderLinkyPicker(label, entity, configAttr) {
+    return this.renderPicker(label, entity, configAttr, "sensor.myPort");
+  }
+
+  renderPicker(label, entity, configAttr, domain) {
+    return html`
+              <ha-entity-picker
+                label="${label}"
+                .hass="${this.hass}"
+                .value="${entity}"
+                .configValue="${configAttr}"
+                .includeDomains="${domain}"
+                @change="${this._valueChanged}"
+                allow-custom-entity
+              ></ha-entity-picker>
+            `
   }
   
   renderSwitchOption(label, state, configAttr) {
