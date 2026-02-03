@@ -191,7 +191,7 @@ class ContentCardMaree extends LitElement {
     return html
       `<td>
       <div class="day">
-         <span class="time">${new Date(daily.datetime).toLocaleString('en-US', {hour: 'numeric', hour12: false} )}h</span>
+         <span class="time">${new Date(daily.dateComplete).toLocaleString('en-US', {hour: 'numeric', hour12: false} )}h</span>
       </div>
       </td>`;
   }
